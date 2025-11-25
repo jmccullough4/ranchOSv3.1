@@ -1,0 +1,18 @@
+{
+  "ranches": [
+    {
+      "ranchId": "demo",
+      "companyName": "3 Strands Cattle Co., LLC",
+      "url": "https://ranch-demo.ranchos.app",
+      "createdAt": "2025-11-25T01:09:17.242Z",
+      "status": "active"
+    },
+    {
+      "ranchId": "testranch",
+      "companyName": "Test Ranch LLC",
+      "url": "https://ranch-testranch.ranchos.app",
+      "createdAt": "2025-11-25T01:16:24.825Z",
+      "status": "active"
+    }
+  ]
+}

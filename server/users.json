@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "password": "Admin1234!",
+      "role": "admin",
+      "createdAt": "2025-01-19T00:00:00.000Z"
+    },
+    {
+      "username": "jay",
+      "password": "Admin1234!",
+      "role": "user",
+      "createdAt": "2025-11-20T16:34:51.036Z"
+    }
+  ]
+}

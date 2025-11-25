@@ -1,0 +1,39 @@
+{
+  "name": "ranchos-demo",
+  "version": "4.0.0",
+  "description": "RanchOS Multi-Tenant SaaS Platform - Smart ranch management system with complete data isolation.",
+  "scripts": {
+    "start": "NODE_ENV=production node server/server-multitenant.js",
+    "dev": "concurrently \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "nodemon --watch server server/server-multitenant.js",
+    "dev:client": "cd frontend && vite",
+    "dev:cameras": "node simulator/youtube-camera-server.js",
+    "dev:cattle": "node simulator/cattle-simulator.js",
+    "cameras": "node simulator/youtube-camera-server.js",
+    "cattle": "node simulator/cattle-simulator.js",
+    "simulators": "concurrently \"npm:cameras\" \"npm:cattle\"",
+    "prebuild": "node scripts/generate-version.js",
+    "build": "npm run prebuild && cd frontend && vite build",
+    "preview": "cd frontend && vite preview --host 0.0.0.0 --port 4173"
+  },
+  "dependencies": {
+    "@mapbox/mapbox-gl-draw": "^1.5.1",
+    "@mapbox/mapbox-gl-geocoder": "^5.1.2",
+    "bcrypt": "^6.0.0",
+    "canvas": "^2.11.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mapbox-gl": "^2.15.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.0",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.3",
+    "vite": "^5.0.0"
+  },
+  "license": "UNLICENSED"
+}

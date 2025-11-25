@@ -1,0 +1,15 @@
+{
+  "sensors": [
+    {
+      "id": "sensor-1763824846088",
+      "name": "Test Water Sensor",
+      "type": "water",
+      "createdAt": "2025-11-22T15:20:46.088Z",
+      "lastValue": null,
+      "status": "active",
+      "lat": 38.5,
+      "lon": -98.5,
+      "updatedAt": "2025-11-22T15:21:01.167Z"
+    }
+  ]
+}

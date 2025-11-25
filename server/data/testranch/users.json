@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "username": "testadmin",
+      "password": "$2b$10$gc5gSmM.rjbQZTjssSooaO6cA8yvZ4UHfXwQKhvqcM9LDoHYPdQDS",
+      "role": "admin",
+      "createdAt": "2025-11-25T01:16:24.824Z"
+    }
+  ]
+}

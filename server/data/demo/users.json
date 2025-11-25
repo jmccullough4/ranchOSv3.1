@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "password": "$2b$10$7HjErqU48blkxUPHBQDvmute2TPslYolTDvYpYrQdyzr7Q8XFnwpG",
+      "role": "admin",
+      "createdAt": "2025-01-19T00:00:00.000Z"
+    },
+    {
+      "username": "jay",
+      "password": "$2b$10$LnPWwVJssSNhwhyO64B5ZuQt.Qb5Nz8M.tFVkTl23a2eg0jPWnaJ6",
+      "role": "user",
+      "createdAt": "2025-11-20T16:34:51.036Z"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "pastures": [
+    {
+      "id": "primary",
+      "name": "Main Pasture",
+      "isProperty": true,
+      "boundary": [
+        [-104.9950, 39.1200],
+        [-104.9900, 39.1200],
+        [-104.9900, 39.1250],
+        [-104.9950, 39.1250],
+        [-104.9950, 39.1200]
+      ],
+      "center": {
+        "lat": 39.1225,
+        "lon": -104.9925
+      },
+      "gates": [
+        {
+          "id": "North Gate",
+          "lat": 39.1245,
+          "lon": -104.9925,
+          "status": "closed"
+        },
+        {
+          "id": "South Gate",
+          "lat": 39.1205,
+          "lon": -104.9927,
+          "status": "open"
+        },
+        {
+          "id": "East Gate",
+          "lat": 39.1227,
+          "lon": -104.9905,
+          "status": "closed"
+        },
+        {
+          "id": "West Gate",
+          "lat": 39.1221,
+          "lon": -104.9945,
+          "status": "closed"
+        }
+      ]
+    },
+    {
+      "id": "pasture-north",
+      "name": "North Pasture",
+      "isProperty": false,
+      "boundary": [
+        [-104.9940, 39.1250],
+        [-104.9910, 39.1250],
+        [-104.9910, 39.1280],
+        [-104.9940, 39.1280],
+        [-104.9940, 39.1250]
+      ]
+    },
+    {
+      "id": "pasture-south",
+      "name": "South Grazing Area",
+      "isProperty": false,
+      "boundary": [
+        [-104.9940, 39.1170],
+        [-104.9910, 39.1170],
+        [-104.9910, 39.1200],
+        [-104.9940, 39.1200],
+        [-104.9940, 39.1170]
+      ]
+    }
+  ]
+}

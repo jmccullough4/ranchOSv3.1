@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RanchOS Simulation Console</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-brand">
+        <h1>🎛️ RanchOS Simulation Console</h1>
+        <p class="subtitle">Unified herd + sensor driver for demos and QA</p>
+      </div>
+      <div class="header-controls">
+        <label for="serverUrl">RanchOS Server URL</label>
+        <div class="server-input-row">
+          <input type="text" id="serverUrl" value="http://localhost:8082" class="config-input" />
+          <button id="pingServerBtn" class="btn btn-secondary">Ping</button>
+        </div>
+        <div id="pingStatus" class="ping-status"></div>
+      </div>
+    </header>
+
+    <div class="sim-grid">
+      <section class="panel sim-panel">
+        <div class="panel-header">
+          <div>
+            <h2>Sensor Simulator</h2>
+            <p class="panel-subtitle">Stream water, fence, gate, and soil readings into RanchOS.</p>
+          </div>
+          <div class="status-indicator" id="sensorConnectionStatus">
+            <span class="status-dot"></span>
+            <span class="status-text">Disconnected</span>
+          </div>
+        </div>
+
+        <div class="panel-body sensor-body">
+          <div class="config-column">
+            <div class="config-section">
+              <h3 class="section-subtitle">Sensor Counts</h3>
+              <div class="sensor-config">
+                <label class="sensor-label">
+                  <span class="sensor-icon">💧</span>
+                  Water Level
+                  <input type="number" id="waterCount" value="3" min="0" max="20" class="sensor-input" />
+                </label>
+              </div>
+              <div class="sensor-config">
+                <label class="sensor-label">
+                  <span class="sensor-icon">⚡</span>
+                  Fence Voltage
+                  <input type="number" id="fenceCount" value="4" min="0" max="20" class="sensor-input" />
+                </label>
+              </div>
+              <div class="sensor-config">
+                <label class="sensor-label">
+                  <span class="sensor-icon">🚪</span>
+                  Gate Status
+                  <input type="number" id="gateCount" value="4" min="0" max="20" class="sensor-input" />
+                </label>
+              </div>
+              <div class="sensor-config">
+                <label class="sensor-label">
+                  <span class="sensor-icon">🌡️</span>
+                  Temperature
+                  <input type="number" id="tempCount" value="2" min="0" max="20" class="sensor-input" />
+                </label>
+              </div>
+              <div class="sensor-config">
+                <label class="sensor-label">
+                  <span class="sensor-icon">📡</span>
+                  Network Nodes
+                  <input type="number" id="networkCount" value="1" min="0" max="20" class="sensor-input" />
+                </label>
+              </div>
+              <div class="sensor-config">
+                <label class="sensor-label">
+                  <span class="sensor-icon">🌱</span>
+                  Soil Moisture
+                  <input type="number" id="soilCount" value="2" min="0" max="20" class="sensor-input" />
+                </label>
+              </div>
+            </div>
+
+            <div class="config-section">
+              <label class="config-label">
+                Update Interval (seconds)
+                <input type="number" id="updateInterval" value="5" min="1" max="60" class="config-input" />
+              </label>
+            </div>
+
+            <div class="button-group">
+              <button class="btn btn-primary" id="startSensorBtn">Start Simulation</button>
+              <button class="btn btn-secondary" id="stopSensorBtn" disabled>Stop</button>
+              <button class="btn btn-accent" id="syncSensorsBtn">Sync with RanchOS</button>
+            </div>
+          </div>
+
+          <div class="data-column">
+            <div class="panel-subsection">
+              <div class="panel-header small">
+                <h3>Active Sensors</h3>
+                <span class="sensor-count" id="sensorCount">0 sensors</span>
+              </div>
+              <div id="sensorsList" class="sensors-list">
+                <div class="empty-state">
+                  <div class="empty-icon">📊</div>
+                  <p>No sensors configured</p>
+                  <p class="empty-hint">Adjust counts and start the simulation</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="logs-panel slim">
+          <div class="panel-header small">
+            <h3>Sensor Activity</h3>
+            <button id="clearSensorLogsBtn" class="btn-small">Clear</button>
+          </div>
+          <div id="sensorLogs" class="logs-list"></div>
+        </div>
+      </section>
+
+      <section class="panel sim-panel">
+        <div class="panel-header">
+          <div>
+            <h2>Herd Simulator</h2>
+            <p class="panel-subtitle">Control cattle clustering, stray behavior, and fence reactions.</p>
+          </div>
+          <div class="status-indicator" id="herdConnectionStatus">
+            <span class="status-dot"></span>
+            <span class="status-text">Disconnected</span>
+          </div>
+        </div>
+
+        <div class="panel-body herd-body">
+          <div class="config-column">
+            <div class="control-group">
+              <label for="totalCattleCount">Total Cattle <span id="labelTotalCattle">50</span></label>
+              <input type="range" id="totalCattleCount" min="10" max="200" value="50" />
+            </div>
+            <div class="control-group">
+              <label for="strayPercentage">Stray Percentage <span id="labelStrayPercentage">10%</span></label>
+              <input type="range" id="strayPercentage" min="0" max="50" value="10" />
+            </div>
+            <div class="control-grid">
+              <div class="control-group">
+                <label for="movementSpeed">Movement Speed <span id="labelMovementSpeed">0.00018</span></label>
+                <input type="range" id="movementSpeed" min="0.00005" max="0.0004" step="0.00001" value="0.00018" />
+              </div>
+              <div class="control-group">
+                <label for="herdCohesion">Herd Cohesion <span id="labelHerdCohesion">0.10</span></label>
+                <input type="range" id="herdCohesion" min="0" max="0.5" step="0.01" value="0.1" />
+              </div>
+              <div class="control-group">
+                <label for="boundaryAvoidanceStrength">Fence Avoidance <span id="labelBoundaryAvoidance">0.30</span></label>
+                <input type="range" id="boundaryAvoidanceStrength" min="0" max="1" step="0.05" value="0.3" />
+              </div>
+              <div class="control-group">
+                <label for="clusterRadius">Cluster Radius <span id="labelClusterRadius">0.01</span></label>
+                <input type="range" id="clusterRadius" min="0.001" max="0.05" step="0.001" value="0.01" />
+              </div>
+              <div class="control-group">
+                <label for="strayRadius">Stray Radius <span id="labelStrayRadius">0.05</span></label>
+                <input type="range" id="strayRadius" min="0.01" max="0.1" step="0.005" value="0.05" />
+              </div>
+              <div class="control-group">
+                <label for="strayDistanceThreshold">Stray Threshold <span id="labelStrayThreshold">0.01</span></label>
+                <input type="range" id="strayDistanceThreshold" min="0.005" max="0.05" step="0.005" value="0.01" />
+              </div>
+              <div class="control-group">
+                <label for="movementLimit">Movement Limit <span id="labelMovementLimit">0.0025</span></label>
+                <input type="range" id="movementLimit" min="0.0005" max="0.01" step="0.0005" value="0.0025" />
+              </div>
+            </div>
+            <div class="button-group compact">
+              <button class="btn btn-primary" id="applyConfigBtn">Apply Config</button>
+              <button class="btn btn-secondary" id="resetHerdBtn">Reset Herd</button>
+              <button class="btn btn-accent" id="refreshStatsBtn">Refresh Stats</button>
+            </div>
+          </div>
+
+          <div class="stats-column">
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-label">Total Cattle</div>
+                <div class="stat-value" id="statTotalCattle">0</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Main Herd</div>
+                <div class="stat-value" id="statMainHerd">0</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Designated Strays</div>
+                <div class="stat-value" id="statDesignatedStrays">0</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Active Stray Alerts</div>
+                <div class="stat-value" id="statActiveStrays">0</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Avg Spread</div>
+                <div class="stat-value" id="statAvgSpread">0 ft</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Max Spread</div>
+                <div class="stat-value" id="statMaxSpread">0 ft</div>
+              </div>
+            </div>
+            <div class="breach-banner" id="fenceBreachWarning">Perimeter secure</div>
+          </div>
+        </div>
+
+        <div class="logs-panel slim">
+          <div class="panel-header small">
+            <h3>Herd Activity</h3>
+            <button id="clearHerdLogsBtn" class="btn-small">Clear</button>
+          </div>
+          <div id="herdLogs" class="logs-list"></div>
+        </div>
+      </section>
+
+      <section class="panel sim-panel">
+        <div class="panel-header">
+          <div>
+            <h2>Camera Simulator</h2>
+            <p class="panel-subtitle">Add YouTube videos to serve as camera feeds on localhost ports.</p>
+          </div>
+          <div class="status-indicator" id="cameraConnectionStatus">
+            <span class="status-dot"></span>
+            <span class="status-text">Disconnected</span>
+          </div>
+        </div>
+
+        <div class="panel-body camera-body">
+          <div class="config-column">
+            <div class="config-section">
+              <h3 class="section-subtitle">Add Camera Feed</h3>
+              <div class="camera-form">
+                <div class="form-group">
+                  <label for="cameraName">Camera Name</label>
+                  <input type="text" id="cameraName" placeholder="e.g., North Gate Entrance" class="config-input" />
+                </div>
+                <div class="form-group">
+                  <label for="youtubeUrl">YouTube URL</label>
+                  <input type="text" id="youtubeUrl" placeholder="https://www.youtube.com/watch?v=..." class="config-input" />
+                </div>
+                <div class="form-group">
+                  <label for="cameraPort">Port (assigned automatically)</label>
+                  <input type="text" id="cameraPort" value="Next: 9090" class="config-input" disabled />
+                </div>
+              </div>
+            </div>
+
+            <div class="button-group">
+              <button class="btn btn-primary" id="addCameraBtn">Add Camera</button>
+              <button class="btn btn-accent" id="syncCamerasBtn">Sync with RanchOS</button>
+            </div>
+          </div>
+
+          <div class="data-column">
+            <div class="panel-subsection">
+              <div class="panel-header small">
+                <h3>Active Cameras</h3>
+                <span class="sensor-count" id="cameraCount">0 cameras</span>
+              </div>
+              <div id="camerasList" class="cameras-list">
+                <div class="empty-state">
+                  <div class="empty-icon">📹</div>
+                  <p>No cameras configured</p>
+                  <p class="empty-hint">Add YouTube URLs to host on localhost ports</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="logs-panel slim">
+          <div class="panel-header small">
+            <h3>Camera Activity</h3>
+            <button id="clearCameraLogsBtn" class="btn-small">Clear</button>
+          </div>
+          <div id="cameraLogs" class="logs-list"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+{
+  "cameras": [
+    {
+      "id": "cam1",
+      "simulatorId": "sim-cam-north-gate",
+      "name": "North Gate Entrance",
+      "description": "Main entrance monitoring - vehicle and personnel detection",
+      "lat": null,
+      "lon": null,
+      "status": "online",
+      "youtubeUrl": "http://localhost:9090",
+      "embedUrl": "http://localhost:9090/embed",
+      "type": "fixed",
+      "capabilities": [
+        "motion_detection",
+        "vehicle_detection",
+        "person_detection",
+        "license_plate"
+      ],
+      "resolution": "4K",
+      "nightVision": true,
+      "weatherproof": true,
+      "ptzCapable": false,
+      "detectionProfile": "gate",
+      "createdAt": "2025-11-21T00:33:53.002Z",
+      "updatedAt": "2025-11-21T00:33:53.002Z",
+      "aiDetection": {
+        "enabled": true,
+        "lastScan": null,
+        "detections": []
+      }
+    },
+    {
+      "id": "cam2",
+      "simulatorId": "sim-cam-south-pasture",
+      "name": "South Pasture Perimeter",
+      "description": "Wide-angle pasture monitoring - predator detection focus",
+      "lat": null,
+      "lon": null,
+      "status": "online",
+      "youtubeUrl": "http://localhost:9091",
+      "embedUrl": "http://localhost:9091/embed",
+      "type": "fixed",
+      "capabilities": [
+        "motion_detection",
+        "predator_detection",
+        "livestock_counting"
+      ],
+      "resolution": "1080p",
+      "nightVision": true,
+      "weatherproof": true,
+      "ptzCapable": false,
+      "detectionProfile": "perimeter",
+      "createdAt": "2025-11-21T00:33:56.885Z",
+      "updatedAt": "2025-11-21T00:33:56.885Z",
+      "aiDetection": {
+        "enabled": true,
+        "lastScan": null,
+        "detections": []
+      }
+    },
+    {
+      "id": "cam3",
+      "simulatorId": "sim-cam-east-water",
+      "name": "East Water Trough Monitor",
+      "description": "Water station monitoring - livestock behavior analysis",
+      "lat": null,
+      "lon": null,
+      "status": "online",
+      "youtubeUrl": "http://localhost:9092",
+      "embedUrl": "http://localhost:9092/embed",
+      "type": "fixed",
+      "capabilities": [
+        "motion_detection",
+        "livestock_counting",
+        "behavior_analysis"
+      ],
+      "resolution": "1080p",
+      "nightVision": true,
+      "weatherproof": true,
+      "ptzCapable": false,
+      "detectionProfile": "feeding",
+      "createdAt": "2025-11-21T00:33:56.885Z",
+      "updatedAt": "2025-11-21T00:33:56.885Z",
+      "aiDetection": {
+        "enabled": true,
+        "lastScan": null,
+        "detections": []
+      }
+    },
+    {
+      "id": "cam4",
+      "simulatorId": "sim-cam-west-chute",
+      "name": "West Chute Station",
+      "description": "Chute area monitoring - operational safety and logging",
+      "lat": null,
+      "lon": null,
+      "status": "online",
+      "youtubeUrl": "http://localhost:9093",
+      "embedUrl": "http://localhost:9093/embed",
+      "type": "fixed",
+      "capabilities": [
+        "motion_detection",
+        "person_detection",
+        "livestock_counting"
+      ],
+      "resolution": "1080p",
+      "nightVision": false,
+      "weatherproof": false,
+      "ptzCapable": false,
+      "detectionProfile": "operational",
+      "createdAt": "2025-11-21T00:33:56.885Z",
+      "updatedAt": "2025-11-21T00:33:56.885Z",
+      "aiDetection": {
+        "enabled": true,
+        "lastScan": null,
+        "detections": []
+      }
+    },
+    {
+      "id": "sim-cam-1763825079412",
+      "name": "East Pasture Monitor",
+      "youtubeUrl": "https://www.youtube.com/watch?v=aqz-KE-bpKQ",
+      "port": 9096,
+      "ipAddress": "localhost",
+      "embedUrl": "http://localhost:9096/embed",
+      "feedType": "youtube",
+      "status": "online",
+      "addedAt": "2025-11-22T15:24:39.412Z"
+    }
+  ]
+}

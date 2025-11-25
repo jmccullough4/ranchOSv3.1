@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  ranchos:
+    build: .
+    image: ranchos-demo:latest
+    container_name: ranchos-command-center
+    ports:
+      - "8082:8082"
+    environment:
+      - NODE_ENV=production
+      - PORT=8082
+      - MAPBOX_TOKEN=${MAPBOX_TOKEN:-}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:8082/api/config', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    networks:
+      - ranch-network
+
+networks:
+  ranch-network:
+    driver: bridge

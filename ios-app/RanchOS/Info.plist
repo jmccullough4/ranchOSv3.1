@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key>
+    <string>RanchOS</string>
+    <key>CFBundleDisplayName</key>
+    <string>RanchOS</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.3strandscattle.RanchOS</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0.0</string>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+    <key>UIRequiredDeviceCapabilities</key>
+    <array>
+        <string>arm64</string>
+    </array>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>UISupportedInterfaceOrientations~ipad</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationPortraitUpsideDown</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>UILaunchScreen</key>
+    <dict>
+        <key>UIColorName</key>
+        <string>LaunchBackgroundColor</string>
+    </dict>
+
+    <!-- App Transport Security - DEVELOPMENT ONLY -->
+    <!-- Remove this section for production builds -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <!-- Allow local networking for development -->
+        <key>NSAllowsLocalNetworking</key>
+        <true/>
+        <!-- Allow HTTP for localhost and local IPs -->
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+        <!-- For production, use HTTPS only and remove NSAllowsArbitraryLoads -->
+        <!-- Uncomment this for production:
+        <key>NSAllowsArbitraryLoads</key>
+        <false/>
+        -->
+    </dict>
+
+    <!-- Privacy Descriptions -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>RanchOS needs your location to show your position on the ranch map.</string>
+
+    <key>NSCameraUsageDescription</key>
+    <string>RanchOS needs camera access to capture photos of cattle.</string>
+
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>RanchOS needs photo library access to save cattle photos.</string>
+</dict>
+</plist>
